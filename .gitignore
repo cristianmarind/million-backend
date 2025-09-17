@@ -1,0 +1,25 @@
+# Ignorar archivos de compilación y ejecución
+[Bb]in/
+[Oo]bj/
+
+# Ignorar archivos de configuración de proyectos y soluciones
+*.suo
+*.user
+*.userossc
+*.vs/
+
+# Ignorar archivos de la documentación de la solución (si existe)
+Docs/
+
+# Ignorar archivos de la caché del proyecto
+.vs/
+*.tmp
+
+# Ignorar archivos de la máquina de desarrollo (si se usan)
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de la configuración del entorno de la máquina de desarrollo
+!.editorconfig
+!.gitattributes
+!README.md
