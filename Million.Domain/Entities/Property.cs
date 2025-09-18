@@ -49,7 +49,12 @@ public class Property
             throw new ArgumentNullException(nameof(presentationConfig), "PresentationConfig is required");
         if (propertyTraces is null || propertyTraces.Count == 0)
             throw new ArgumentNullException(nameof(propertyTraces), "Property must have traces");
-
+        /*
+            Additional validations can be added here
+            1. Year should not be in the future
+            2. CodeInternal format/length
+        */
+        
         Name = name;
         Address = address;
         Price = price;

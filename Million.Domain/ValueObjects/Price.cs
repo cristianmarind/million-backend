@@ -8,6 +8,11 @@ public class Price
     public Price(decimal amount, string currency = "USD")
     {
         if (amount < 0) throw new ArgumentException("Price cannot be negative");
+        /*
+            Additional validations can be added here 
+            1. Supported currency codes
+            2. Decimal places based on currency
+        */
 
         Amount = amount;
         Currency = currency;

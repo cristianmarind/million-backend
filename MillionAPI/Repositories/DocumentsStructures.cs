@@ -1,6 +1,6 @@
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Million.Infrastructure.Repositories;
+namespace MillionAPI.Repositories;
 
 public class AddressDocument {
     public required string Street { get; set; }

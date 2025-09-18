@@ -3,7 +3,7 @@ using Million.Domain.Entities;
 using Million.Domain.ValueObjects;
 using MongoDB.Driver;
 
-namespace Million.Infrastructure.Repositories;
+namespace MillionAPI.Repositories;
 
 public class PropertyRepository : IPropertyRepository {
     private readonly IMongoCollection<PropertyDocument> _collection;

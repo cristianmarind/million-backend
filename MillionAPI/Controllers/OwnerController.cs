@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Million.Application.Features.Owners.Services;
 using Million.Application.DTOs;
 using Million.Application.Interfaces;
 
@@ -9,9 +8,9 @@ namespace MillionAPI.Controllers;
 [Route("api/owners")]
 public class OwnerController : ControllerBase
 {
-    private readonly OwnerService _service;
+    private readonly IOwnerService _service;
 
-    public OwnerController(OwnerService service)
+    public OwnerController(IOwnerService service)
     {
         _service = service;
     }

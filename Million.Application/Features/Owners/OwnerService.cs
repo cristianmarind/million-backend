@@ -3,7 +3,7 @@ using Million.Application.Interfaces;
 
 namespace Million.Application.Features.Owners.Services;
 
-public class OwnerService {
+public class OwnerService : IOwnerService {
     private readonly IOwnerRepository _repository;
 
     public OwnerService(IOwnerRepository repository) {

@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Million.Application\Million.Application.csproj" />
-    <ProjectReference Include="..\Million.Infrastructure\Million.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

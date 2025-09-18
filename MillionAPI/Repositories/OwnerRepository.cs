@@ -4,7 +4,7 @@ using Million.Domain.ValueObjects;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace Million.Infrastructure.Repositories;
+namespace MillionAPI.Repositories;
 
 public class OwnerRepository : IOwnerRepository {
     private readonly IMongoCollection<OwnerDocument> _collection;

@@ -4,9 +4,9 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 
 using Million.Application.Interfaces;
-using Million.Infrastructure.Repositories;
 using Million.Application.Features.Properties.Services;
 using Million.Application.Features.Owners.Services;
+using MillionAPI.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,10 +26,10 @@ builder.Services.AddScoped<IMongoDatabase>(sp =>
 
 // Repositorio + servicio
 builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
-builder.Services.AddScoped<PropertyService>();
+builder.Services.AddScoped<IPropertyService, PropertyService>();
 
 builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
-builder.Services.AddScoped<OwnerService>();
+builder.Services.AddScoped<IOwnerService, OwnerService>();
 
 builder.Services.AddControllers();
 

@@ -19,6 +19,9 @@ public class PropertyTrace
 
         if (tax < 0)
             throw new ArgumentException("Tax cannot be negative", nameof(tax));
+        /*
+            Additional validations can be added here
+        */
 
         DateSale = dateSale;
         Name = name;

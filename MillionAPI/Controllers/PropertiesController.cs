@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Million.Application.Features.Properties.Services;
 using Million.Application.DTOs;
 using Million.Application.Interfaces;
 
@@ -9,9 +8,9 @@ namespace MillionAPI.Controllers;
 [Route("api/properties")]
 public class PropertiesController : ControllerBase
 {
-    private readonly PropertyService _service;
+    private readonly IPropertyService _service;
 
-    public PropertiesController(PropertyService service)
+    public PropertiesController(IPropertyService service)
     {
         _service = service;
     }

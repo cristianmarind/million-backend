@@ -9,6 +9,11 @@ public class PropertyImage
     {
         if (string.IsNullOrWhiteSpace(file))
             throw new ArgumentException("File is required", nameof(file));
+        /*
+            Additional validations can be added here
+            1. Valid URL or file path format
+            2. Supported image file extensions
+        */
 
         File = file;
         Enabled = enabled;

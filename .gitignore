@@ -23,3 +23,7 @@ Thumbs.db
 !.editorconfig
 !.gitattributes
 !README.md
+
+# Ignorar archivos de reporte de pruebas y cobertura
+TestResults/
+test-results/

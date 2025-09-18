@@ -1,10 +1,9 @@
 using Million.Application.DTOs;
 using Million.Application.Interfaces;
-using Million.Domain.Entities;
 
 namespace Million.Application.Features.Properties.Services;
 
-public class PropertyService {
+public class PropertyService : IPropertyService {
     private readonly IPropertyRepository _repository;
 
     public PropertyService(IPropertyRepository repository) {
