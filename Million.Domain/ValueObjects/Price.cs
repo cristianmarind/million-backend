@@ -1,4 +1,6 @@
-﻿namespace Million.Domain.ValueObjects;
+﻿using Million.Domain.Exceptions;
+
+namespace Million.Domain.ValueObjects;
 
 public class Price
 {
@@ -7,7 +9,7 @@ public class Price
 
     public Price(decimal amount, string currency = "USD")
     {
-        if (amount < 0) throw new ArgumentException("Price cannot be negative");
+        if (amount < 0) throw new PropertyContentInvalidException("Price cannot be negative");
         /*
             Additional validations can be added here 
             1. Supported currency codes

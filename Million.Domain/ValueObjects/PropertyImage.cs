@@ -1,3 +1,5 @@
+using Million.Domain.Exceptions;
+
 namespace Million.Domain.Entities;
 
 public class PropertyImage
@@ -8,7 +10,7 @@ public class PropertyImage
     public PropertyImage(string file, bool enabled = true)
     {
         if (string.IsNullOrWhiteSpace(file))
-            throw new ArgumentException("File is required", nameof(file));
+            throw new PropertyNotFoundException("File is required");
         /*
             Additional validations can be added here
             1. Valid URL or file path format

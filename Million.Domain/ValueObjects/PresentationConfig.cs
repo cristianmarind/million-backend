@@ -1,4 +1,6 @@
-﻿namespace Million.Domain.ValueObjects;
+﻿using Million.Domain.Exceptions;
+
+namespace Million.Domain.ValueObjects;
 
 public class PresentationConfig
 {
@@ -6,8 +8,8 @@ public class PresentationConfig
     public string ListClass { get; }
 
     public PresentationConfig(int coverImageIndex, string listClass) {
-        if (coverImageIndex < 0) throw new ArgumentException("Cover image index cannot be negative");
-        if (string.IsNullOrWhiteSpace(listClass)) throw new ArgumentException("ListClass is required");
+        if (coverImageIndex < 0) throw new PropertyContentInvalidException("Cover image index cannot be negative");
+        if (string.IsNullOrWhiteSpace(listClass)) throw new PropertyNotFoundException("ListClass is required");
         /*
             Additional validations can be added here 
             1. Valid CSS class name format

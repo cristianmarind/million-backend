@@ -1,4 +1,6 @@
-﻿namespace Million.Domain.ValueObjects;
+﻿using Million.Domain.Exceptions;
+
+namespace Million.Domain.ValueObjects;
 
 public class Address
 {
@@ -8,9 +10,9 @@ public class Address
 
     public Address(string street, string city, string country)
     {
-        if (string.IsNullOrWhiteSpace(country)) throw new ArgumentException("Country is required");
-        if (string.IsNullOrWhiteSpace(city)) throw new ArgumentException("City is required");
-        if (string.IsNullOrWhiteSpace(street)) throw new ArgumentException("Street is required");
+        if (string.IsNullOrWhiteSpace(country)) throw new PropertyNotFoundException("Country is required");
+        if (string.IsNullOrWhiteSpace(city)) throw new PropertyNotFoundException("City is required");
+        if (string.IsNullOrWhiteSpace(street)) throw new PropertyNotFoundException("Street is required");
         /*
             Additional validations can be added here 
             1. Valid country names using a predefined list

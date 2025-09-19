@@ -1,5 +1,4 @@
-﻿using System;
-using Million.Domain.Exceptions;
+﻿using Million.Domain.Exceptions;
 
 namespace Million.Domain.Entities;
 

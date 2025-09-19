@@ -1,3 +1,4 @@
+using Million.Application.Common;
 using Million.Application.DTOs;
 using Million.Application.Interfaces;
 
@@ -10,14 +11,18 @@ public class OwnerService : IOwnerService {
         _repository = repository;
     }
 
-    public async Task<IEnumerable<OwnerDto>> GetOwnersByFilterAsync(OwnerFilterOptions options) {
+    public async Task<Result<IEnumerable<OwnerDto>>> GetOwnersByFilterAsync(OwnerFilterOptions options) {
         var owners = await _repository.GetByFilterAsync(options);
 
-        return owners.Select(p => new OwnerDto {
+        if (owners == null || !owners.Any()) {
+            return Result<IEnumerable<OwnerDto>>.Fail("No owners found with the given filter options.");
+        }
+
+        return Result<IEnumerable<OwnerDto>>.Ok(owners.Select(p => new OwnerDto {
             Name = p.Name,
             Address = p.Address,
             Photo = p.Photo,
             Birthday = p.Birthday
-        });
+        }));
     }
 }

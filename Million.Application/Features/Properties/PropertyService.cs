@@ -1,3 +1,5 @@
+using Million.Application.Common;
+
 using Million.Application.DTOs;
 using Million.Application.Interfaces;
 
@@ -10,12 +12,16 @@ public class PropertyService : IPropertyService {
         _repository = repository;
     }
 
-    public async Task<IEnumerable<PropertyDto>> GetPropertiesByFilterAsync(
+    public async Task<Result<IEnumerable<PropertyDto>>> GetPropertiesByFilterAsync(
         PropertyFilterOptions options
     ) {
         var properties = await _repository.GetByFilterAsync(options);
 
-        return properties.Select(p => new PropertyDto {
+        if (properties == null || !properties.Any()) {
+            return Result<IEnumerable<PropertyDto>>.Fail("No properties found with the given filter options.");
+        }
+
+        return Result<IEnumerable<PropertyDto>>.Ok(properties.Select(p => new PropertyDto {
             Id = p.Id,
             Name = p.Name,
             Address = $"{p.Address.Street}, {p.Address.City}, {p.Address.Country}",
@@ -34,6 +40,6 @@ public class PropertyService : IPropertyService {
                 CoverImageIndex = p.PresentationConfig.CoverImageIndex,
                 ListClass = p.PresentationConfig.ListClass
             }
-        });
+        }));
     }
 }

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Million.Application.Common;
 using Million.Application.DTOs;
 using Million.Application.Interfaces;
 
@@ -16,7 +17,7 @@ public class OwnerController : ControllerBase
     }
 
     [HttpPost("find")]
-    public async Task<ActionResult<IEnumerable<OwnerDto>>> GetProperties([FromBody] OwnerFilterOptions filter)
+    public async Task<ActionResult<Result<IEnumerable<OwnerDto>>>> GetProperties([FromBody] OwnerFilterOptions filter)
     {
         var result = await _service.GetOwnersByFilterAsync(filter);
         return Ok(result);

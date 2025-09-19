@@ -1,3 +1,5 @@
+using Million.Domain.Exceptions;
+
 namespace Million.Domain.Entities;
 
 public class PropertyTrace
@@ -9,16 +11,16 @@ public class PropertyTrace
 
     public PropertyTrace(DateTime dateSale, string name, decimal value, decimal tax) {
         if (dateSale == default)
-            throw new ArgumentException("DateSale must be valid", nameof(dateSale));
+            throw new PropertyNotFoundException("DateSale must be valid");
 
         if (string.IsNullOrWhiteSpace(name))
-            throw new ArgumentException("Name is required", nameof(name));
+            throw new PropertyNotFoundException("Name is required");
 
         if (value <= 0)
-            throw new ArgumentException("Value must be positive", nameof(value));
+            throw new PropertyContentInvalidException("Value must be positive");
 
         if (tax < 0)
-            throw new ArgumentException("Tax cannot be negative", nameof(tax));
+            throw new PropertyContentInvalidException("Tax cannot be negative");
         /*
             Additional validations can be added here
         */
