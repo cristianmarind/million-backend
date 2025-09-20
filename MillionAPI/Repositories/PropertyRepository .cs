@@ -1,7 +1,9 @@
+using MongoDB.Driver;
+using MongoDB.Driver.GeoJsonObjectModel;
+
 using Million.Application.Interfaces;
 using Million.Domain.Entities;
 using Million.Domain.ValueObjects;
-using MongoDB.Driver;
 
 namespace MillionAPI.Repositories;
 
@@ -31,17 +33,52 @@ public class PropertyRepository : IPropertyRepository {
         if (options.MaxPrice.HasValue)
             filter &= filterBuilder.Lte("Price.Amount", options.MaxPrice.Value);
 
+        if (options.category != null)
+            filter &= filterBuilder.Eq("Category", options.category);
+
+        /*if (options.latitude != null && options.longitude != null) {
+            var location = new GeoJsonPoint<GeoJson2DCoordinates>(
+                new GeoJson2DCoordinates(options.longitude.Value, options.latitude.Value)
+            );
+
+            filter &= filterBuilder.Near(
+                x => x.Location,
+                location
+            );
+        }*/
+
         return filter;
     }
 
     public async Task<IEnumerable<Property>> GetByFilterAsync(PropertyFilterOptions options) {
+        List<PropertyDocument> docs;
         var filter = BuildFilter(options);
+        var isNearSearch = options.latitude != null && options.longitude != null;
 
-        var docs = await _collection
+        if (!isNearSearch) {
+            docs = await _collection
             .Find(filter)
             .Skip(options.PageSize * (options.Page - 1))
             .Limit(options.PageSize)
             .ToListAsync();
+        }
+        else {
+            var coords = new double[] { options.longitude.Value, options.latitude.Value };
+
+            docs = await _collection.Aggregate()
+                .GeoNear<PropertyDocument, PropertyDocument>(
+                    coords,
+                    new GeoNearOptions<PropertyDocument, PropertyDocument> {
+                        DistanceField = "Distance",
+                        Spherical = true,
+                        Query = filter
+                    }
+                )
+                .Skip((long)(options.PageSize * (options.Page - 1)))
+                .Limit((long)options.PageSize)
+                .ToListAsync();
+        }
+
 
         return docs.Select(d => new Property(
             d.Name,
@@ -52,7 +89,8 @@ public class PropertyRepository : IPropertyRepository {
             d.Year,
             d.PropertyImage.Select(pi => new PropertyImage(pi.ImageUrl, pi.Enabled)).ToList(),
             d.PropertyTrace.Select(pt => new PropertyTrace(pt.Date, pt.Name, pt.Value, pt.Tax)).ToList(),
-            new PresentationConfig(d.PresentationConfig.CoverImageIndex, d.PresentationConfig.ListClass)
+            new PresentationConfig(d.PresentationConfig.CoverImageIndex, d.PresentationConfig.ListClass),
+            d.Category
         ));
     }
 }

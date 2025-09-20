@@ -6,6 +6,8 @@ namespace Million.Application.DTOs;
 public class PropertyDto {
     public Guid Id { get; set; }
     [Required]
+    public int Category { get; set; } = default!;
+    [Required]
     public string Name { get; set; } = default!;
     [Required]
     public string Address { get; set; } = default!;

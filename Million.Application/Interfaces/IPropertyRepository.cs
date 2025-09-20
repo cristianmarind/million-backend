@@ -4,6 +4,9 @@ namespace Million.Application.Interfaces;
 
 public class PropertyFilterOptions
 {
+    public int? category { get; set; }
+    public double? longitude { get; set; }
+    public double? latitude { get; set; }
     public string? Name { get; set; }
     public string? Address { get; set; }
     public decimal? MinPrice { get; set; }

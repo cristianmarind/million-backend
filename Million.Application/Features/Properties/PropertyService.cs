@@ -18,13 +18,14 @@ public class PropertyService : IPropertyService {
         var properties = await _repository.GetByFilterAsync(options);
 
         if (properties == null || !properties.Any()) {
-            return Result<IEnumerable<PropertyDto>>.Fail("No properties found with the given filter options.");
+            return Result<IEnumerable<PropertyDto>>.Ok(Enumerable.Empty<PropertyDto>());
         }
 
         return Result<IEnumerable<PropertyDto>>.Ok(properties.Select(p => new PropertyDto {
             Id = p.Id,
             Name = p.Name,
             Address = $"{p.Address.Street}, {p.Address.City}, {p.Address.Country}",
+            Category = p.Category,
             Price = p.Price.Amount,
             CodeInternal = p.CodeInternal,
             Year = p.Year,

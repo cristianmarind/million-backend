@@ -1,4 +1,5 @@
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver.GeoJsonObjectModel;
 
 namespace MillionAPI.Repositories;
 
@@ -33,6 +34,9 @@ public class PresentationConfigDocument {
 public class PropertyDocument {
     [BsonId] // marca como la PK en Mongo
     public Guid Id { get; set; }
+    public required int Category { get; set; }
+    [BsonElement("Location")]
+    public required GeoJsonPoint<GeoJson2DCoordinates> Location { get; set; }
     public required string Name { get; set; }
     public required AddressDocument Address { get; set; }
     public required PriceDocument Price { get; set; }
@@ -42,6 +46,7 @@ public class PropertyDocument {
     public required List<PropertyImageDocument> PropertyImage { get; set; }
     public List<PropertyTraceDocument> PropertyTrace { get; set; } = [];
     public required PresentationConfigDocument PresentationConfig { get; set; }
+    public double Distance { get; set; }
 }
 
 public class OwnerDocument {

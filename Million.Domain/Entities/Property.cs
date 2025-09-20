@@ -7,6 +7,7 @@ public class Property
     public Guid Id { get; private set; } = Guid.NewGuid();
     public string Name { get; private set; }
     public Address Address { get; private set; }   
+    public int Category { get; private set; }
     public Price Price { get; private set; }      
     public string CodeInternal { get; private set; } 
     public int Year { get; private set; }
@@ -24,7 +25,8 @@ public class Property
         int year,
         List<PropertyImage> propertyImages,
         List<PropertyTrace> propertyTraces,
-        PresentationConfig presentationConfig
+        PresentationConfig presentationConfig,
+        int category
     ) {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Property name is required", nameof(name));
@@ -43,13 +45,15 @@ public class Property
 
         if (year < 1800 || year > DateTime.UtcNow.Year)
             throw new ArgumentException("Year must be valid", nameof(year));
-        if (propertyImages is null || propertyImages.Count == 0) 
+        if (propertyImages is null || propertyImages.Count == 0)
             throw new ArgumentNullException(nameof(propertyImages), "Property must have images");
         if (presentationConfig is null)
             throw new ArgumentNullException(nameof(presentationConfig), "PresentationConfig is required");
         if (propertyTraces is null || propertyTraces.Count == 0)
             throw new ArgumentNullException(nameof(propertyTraces), "Property must have traces");
-        
+        if (category == 0)
+            throw new ArgumentException("Category must be valid", nameof(category));
+
         Name = name;
         Address = address;
         Price = price;
@@ -59,5 +63,6 @@ public class Property
         PropertyTraces = propertyTraces;
         PropertyImages = propertyImages;
         PresentationConfig = presentationConfig;
+        Category = category;
     }
 }
