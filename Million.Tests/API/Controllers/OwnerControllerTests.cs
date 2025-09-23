@@ -47,8 +47,8 @@ public class OwnerControllerTests
             }
         };
 
-        _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
-                   .ReturnsAsync(expectedDtos);
+    _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
+           .ReturnsAsync(Million.Application.Common.Result<IEnumerable<OwnerDto>>.Ok(expectedDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -57,8 +57,10 @@ public class OwnerControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(expectedDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<OwnerDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(expectedDtos));
     }
 
     [Test]
@@ -72,8 +74,8 @@ public class OwnerControllerTests
 
         var emptyDtos = new List<OwnerDto>();
 
-        _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
-                   .ReturnsAsync(emptyDtos);
+    _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
+           .ReturnsAsync(Million.Application.Common.Result<IEnumerable<OwnerDto>>.Ok(emptyDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -82,8 +84,10 @@ public class OwnerControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(emptyDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<OwnerDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(emptyDtos));
     }
 
     [Test]
@@ -93,8 +97,8 @@ public class OwnerControllerTests
         OwnerFilterOptions filter = null!;
         var emptyDtos = new List<OwnerDto>();
 
-        _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
-                   .ReturnsAsync(emptyDtos);
+    _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
+           .ReturnsAsync(Million.Application.Common.Result<IEnumerable<OwnerDto>>.Ok(emptyDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -103,8 +107,10 @@ public class OwnerControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(emptyDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<OwnerDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(emptyDtos));
     }
 
     [Test]
@@ -118,8 +124,8 @@ public class OwnerControllerTests
 
         var emptyDtos = new List<OwnerDto>();
 
-        _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
-                   .ReturnsAsync(emptyDtos);
+    _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
+           .ReturnsAsync(Million.Application.Common.Result<IEnumerable<OwnerDto>>.Ok(emptyDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -128,8 +134,10 @@ public class OwnerControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(emptyDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<OwnerDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(emptyDtos));
     }
 
     [Test]
@@ -152,8 +160,8 @@ public class OwnerControllerTests
             }
         };
 
-        _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
-                   .ReturnsAsync(expectedDtos);
+    _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
+           .ReturnsAsync(Million.Application.Common.Result<IEnumerable<OwnerDto>>.Ok(expectedDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -162,8 +170,10 @@ public class OwnerControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(expectedDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<OwnerDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(expectedDtos));
     }
 
     [Test]
@@ -205,8 +215,8 @@ public class OwnerControllerTests
             }
         };
 
-        _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
-                   .ReturnsAsync(expectedDtos);
+    _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
+           .ReturnsAsync(Million.Application.Common.Result<IEnumerable<OwnerDto>>.Ok(expectedDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -215,8 +225,10 @@ public class OwnerControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(expectedDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<OwnerDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(expectedDtos));
     }
 
     [Test]
@@ -239,8 +251,8 @@ public class OwnerControllerTests
             }
         };
 
-        _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
-                   .ReturnsAsync(expectedDtos);
+    _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
+           .ReturnsAsync(Million.Application.Common.Result<IEnumerable<OwnerDto>>.Ok(expectedDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -249,8 +261,10 @@ public class OwnerControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(expectedDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<OwnerDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(expectedDtos));
     }
 
     [Test]
@@ -273,8 +287,8 @@ public class OwnerControllerTests
             }
         };
 
-        _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
-                   .ReturnsAsync(expectedDtos);
+    _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
+           .ReturnsAsync(Million.Application.Common.Result<IEnumerable<OwnerDto>>.Ok(expectedDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -283,8 +297,10 @@ public class OwnerControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(expectedDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<OwnerDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(expectedDtos));
     }
 
     [Test]
@@ -298,8 +314,8 @@ public class OwnerControllerTests
 
         var emptyDtos = new List<OwnerDto>();
 
-        _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
-                   .ReturnsAsync(emptyDtos);
+    _mockService.Setup(s => s.GetOwnersByFilterAsync(filter))
+           .ReturnsAsync(Million.Application.Common.Result<IEnumerable<OwnerDto>>.Ok(emptyDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -308,7 +324,9 @@ public class OwnerControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(emptyDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<OwnerDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(emptyDtos));
     }
 }

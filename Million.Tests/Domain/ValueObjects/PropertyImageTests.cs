@@ -57,7 +57,7 @@ public class PropertyImageTests
         var enabled = true;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PropertyImage(file, enabled));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new PropertyImage(file, enabled));
 
         Assert.That(ex.Message, Does.Contain("File is required"));
     }
@@ -70,7 +70,7 @@ public class PropertyImageTests
         var enabled = true;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PropertyImage(file, enabled));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new PropertyImage(file, enabled));
 
         Assert.That(ex.Message, Does.Contain("File is required"));
     }
@@ -83,7 +83,7 @@ public class PropertyImageTests
         var enabled = true;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PropertyImage(file, enabled));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new PropertyImage(file, enabled));
 
         Assert.That(ex.Message, Does.Contain("File is required"));
     }

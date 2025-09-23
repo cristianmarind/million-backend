@@ -37,7 +37,7 @@ public class PropertiesControllerTests
         {
             new PropertyDto
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Test Property 1",
                 Address = "123 Main St, New York, USA",
                 Price = 250000m,
@@ -64,7 +64,7 @@ public class PropertiesControllerTests
         };
 
         _mockService.Setup(s => s.GetPropertiesByFilterAsync(filter))
-                   .ReturnsAsync(expectedDtos);
+                   .ReturnsAsync(Million.Application.Common.Result<IEnumerable<PropertyDto>>.Ok(expectedDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -73,8 +73,10 @@ public class PropertiesControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(expectedDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<PropertyDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(expectedDtos));
     }
 
     [Test]
@@ -88,8 +90,8 @@ public class PropertiesControllerTests
 
         var emptyDtos = new List<PropertyDto>();
 
-        _mockService.Setup(s => s.GetPropertiesByFilterAsync(filter))
-                   .ReturnsAsync(emptyDtos);
+    _mockService.Setup(s => s.GetPropertiesByFilterAsync(filter))
+           .ReturnsAsync(Million.Application.Common.Result<IEnumerable<PropertyDto>>.Ok(emptyDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -98,8 +100,10 @@ public class PropertiesControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(emptyDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<PropertyDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(emptyDtos));
     }
 
     [Test]
@@ -109,8 +113,8 @@ public class PropertiesControllerTests
         PropertyFilterOptions filter = null!;
         var emptyDtos = new List<PropertyDto>();
 
-        _mockService.Setup(s => s.GetPropertiesByFilterAsync(filter))
-                   .ReturnsAsync(emptyDtos);
+    _mockService.Setup(s => s.GetPropertiesByFilterAsync(filter))
+           .ReturnsAsync(Million.Application.Common.Result<IEnumerable<PropertyDto>>.Ok(emptyDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -119,8 +123,10 @@ public class PropertiesControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(emptyDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<PropertyDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(emptyDtos));
     }
 
     [Test]
@@ -133,7 +139,7 @@ public class PropertiesControllerTests
         {
             new PropertyDto
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Property 1",
                 Address = "123 Main St, New York, USA",
                 Price = 250000m,
@@ -150,7 +156,7 @@ public class PropertiesControllerTests
             },
             new PropertyDto
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Property 2",
                 Address = "456 Oak Ave, Los Angeles, USA",
                 Price = 350000m,
@@ -168,7 +174,7 @@ public class PropertiesControllerTests
         };
 
         _mockService.Setup(s => s.GetPropertiesByFilterAsync(filter))
-                   .ReturnsAsync(expectedDtos);
+                   .ReturnsAsync(Million.Application.Common.Result<IEnumerable<PropertyDto>>.Ok(expectedDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -177,8 +183,10 @@ public class PropertiesControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(expectedDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<PropertyDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(expectedDtos));
     }
 
     [Test]
@@ -195,7 +203,7 @@ public class PropertiesControllerTests
         {
             new PropertyDto
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Property Page 2",
                 Address = "789 Pine St, Chicago, USA",
                 Price = 400000m,
@@ -213,7 +221,7 @@ public class PropertiesControllerTests
         };
 
         _mockService.Setup(s => s.GetPropertiesByFilterAsync(filter))
-                   .ReturnsAsync(expectedDtos);
+                   .ReturnsAsync(Million.Application.Common.Result<IEnumerable<PropertyDto>>.Ok(expectedDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -222,8 +230,10 @@ public class PropertiesControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(expectedDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<PropertyDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(expectedDtos));
     }
 
     [Test]
@@ -240,7 +250,7 @@ public class PropertiesControllerTests
         {
             new PropertyDto
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "Mid-Range Property",
                 Address = "321 Elm St, Boston, USA",
                 Price = 275000m,
@@ -258,7 +268,7 @@ public class PropertiesControllerTests
         };
 
         _mockService.Setup(s => s.GetPropertiesByFilterAsync(filter))
-                   .ReturnsAsync(expectedDtos);
+                   .ReturnsAsync(Million.Application.Common.Result<IEnumerable<PropertyDto>>.Ok(expectedDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -267,8 +277,10 @@ public class PropertiesControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(expectedDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<PropertyDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(expectedDtos));
     }
 
     [Test]
@@ -284,7 +296,7 @@ public class PropertiesControllerTests
         {
             new PropertyDto
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Name = "NYC Property",
                 Address = "555 Broadway, New York, USA",
                 Price = 600000m,
@@ -302,7 +314,7 @@ public class PropertiesControllerTests
         };
 
         _mockService.Setup(s => s.GetPropertiesByFilterAsync(filter))
-                   .ReturnsAsync(expectedDtos);
+                   .ReturnsAsync(Million.Application.Common.Result<IEnumerable<PropertyDto>>.Ok(expectedDtos));
 
         // Act
         var result = await _controller.GetProperties(filter);
@@ -311,7 +323,9 @@ public class PropertiesControllerTests
         Assert.That(result.Result, Is.InstanceOf<OkObjectResult>());
         
         var okResult = result.Result as OkObjectResult;
-        Assert.That(okResult, Is.Not.Null);
-        Assert.That(okResult.Value, Is.EqualTo(expectedDtos));
+    Assert.That(okResult, Is.Not.Null);
+    var resultValue = okResult.Value as Million.Application.Common.Result<IEnumerable<PropertyDto>>;
+    Assert.That(resultValue, Is.Not.Null);
+    Assert.That(resultValue!.Value, Is.EqualTo(expectedDtos));
     }
 }

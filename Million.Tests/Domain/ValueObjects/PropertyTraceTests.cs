@@ -34,7 +34,7 @@ public class PropertyTraceTests
         var tax = 5000m;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PropertyTrace(dateSale, name, value, tax));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new PropertyTrace(dateSale, name, value, tax));
 
         Assert.That(ex.Message, Does.Contain("DateSale must be valid"));
     }
@@ -49,7 +49,7 @@ public class PropertyTraceTests
         var tax = 5000m;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PropertyTrace(dateSale, name, value, tax));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new PropertyTrace(dateSale, name, value, tax));
 
         Assert.That(ex.Message, Does.Contain("Name is required"));
     }
@@ -64,7 +64,7 @@ public class PropertyTraceTests
         var tax = 5000m;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PropertyTrace(dateSale, name, value, tax));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new PropertyTrace(dateSale, name, value, tax));
 
         Assert.That(ex.Message, Does.Contain("Name is required"));
     }
@@ -79,7 +79,7 @@ public class PropertyTraceTests
         var tax = 5000m;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PropertyTrace(dateSale, name, value, tax));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new PropertyTrace(dateSale, name, value, tax));
 
         Assert.That(ex.Message, Does.Contain("Name is required"));
     }
@@ -94,7 +94,7 @@ public class PropertyTraceTests
         var tax = 5000m;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PropertyTrace(dateSale, name, value, tax));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyContentInvalidException>(() => new PropertyTrace(dateSale, name, value, tax));
 
         Assert.That(ex.Message, Does.Contain("Value must be positive"));
     }
@@ -109,7 +109,7 @@ public class PropertyTraceTests
         var tax = 5000m;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PropertyTrace(dateSale, name, value, tax));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyContentInvalidException>(() => new PropertyTrace(dateSale, name, value, tax));
 
         Assert.That(ex.Message, Does.Contain("Value must be positive"));
     }
@@ -124,7 +124,7 @@ public class PropertyTraceTests
         var tax = -100m;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PropertyTrace(dateSale, name, value, tax));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyContentInvalidException>(() => new PropertyTrace(dateSale, name, value, tax));
 
         Assert.That(ex.Message, Does.Contain("Tax cannot be negative"));
     }

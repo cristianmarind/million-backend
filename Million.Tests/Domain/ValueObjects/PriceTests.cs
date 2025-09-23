@@ -57,7 +57,7 @@ public class PriceTests
         var currency = "USD";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new Price(amount, currency));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyContentInvalidException>(() => new Price(amount, currency));
 
         Assert.That(ex.Message, Does.Contain("Price cannot be negative"));
     }

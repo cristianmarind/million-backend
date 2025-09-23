@@ -41,6 +41,7 @@ public class PropertyTests
 
         // Act
         var property = new Property(
+            Guid.NewGuid().ToString(),
             name,
             _validAddress,
             _validPrice,
@@ -49,7 +50,8 @@ public class PropertyTests
             year,
             _validImages,
             _validTraces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         );
 
         // Assert
@@ -62,7 +64,7 @@ public class PropertyTests
         Assert.That(property.PropertyImages, Is.EqualTo(_validImages));
         Assert.That(property.PropertyTraces, Is.EqualTo(_validTraces));
         Assert.That(property.PresentationConfig, Is.EqualTo(_validPresentationConfig));
-        Assert.That(property.Id, Is.Not.EqualTo(Guid.Empty));
+    Assert.That(property.Id, Is.Not.EqualTo(string.Empty));
     }
 
     [Test]
@@ -75,6 +77,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentException>(() => new Property(
+            "id",
             name,
             _validAddress,
             _validPrice,
@@ -83,7 +86,8 @@ public class PropertyTests
             year,
             _validImages,
             _validTraces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("Property name is required"));
@@ -99,6 +103,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentException>(() => new Property(
+            "id",
             name,
             _validAddress,
             _validPrice,
@@ -107,7 +112,8 @@ public class PropertyTests
             year,
             _validImages,
             _validTraces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("Property name is required"));
@@ -124,6 +130,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentNullException>(() => new Property(
+            "id",
             name,
             address,
             _validPrice,
@@ -132,7 +139,8 @@ public class PropertyTests
             year,
             _validImages,
             _validTraces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("Address is required"));
@@ -149,6 +157,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentNullException>(() => new Property(
+            "id",
             name,
             _validAddress,
             price,
@@ -157,7 +166,8 @@ public class PropertyTests
             year,
             _validImages,
             _validTraces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("Price is required"));
@@ -174,6 +184,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentException>(() => new Property(
+            "id",
             name,
             _validAddress,
             _validPrice,
@@ -182,7 +193,8 @@ public class PropertyTests
             year,
             _validImages,
             _validTraces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("OwnerId must be valid"));
@@ -198,6 +210,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentException>(() => new Property(
+            "id",
             name,
             _validAddress,
             _validPrice,
@@ -206,7 +219,8 @@ public class PropertyTests
             year,
             _validImages,
             _validTraces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("Internal code is required"));
@@ -222,6 +236,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentException>(() => new Property(
+            "id",
             name,
             _validAddress,
             _validPrice,
@@ -230,7 +245,8 @@ public class PropertyTests
             year,
             _validImages,
             _validTraces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("Year must be valid"));
@@ -246,6 +262,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentException>(() => new Property(
+            "id",
             name,
             _validAddress,
             _validPrice,
@@ -254,7 +271,8 @@ public class PropertyTests
             year,
             _validImages,
             _validTraces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("Year must be valid"));
@@ -271,6 +289,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentNullException>(() => new Property(
+            "id",
             name,
             _validAddress,
             _validPrice,
@@ -279,7 +298,8 @@ public class PropertyTests
             year,
             images,
             _validTraces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("Property must have images"));
@@ -296,6 +316,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentNullException>(() => new Property(
+            "id",
             name,
             _validAddress,
             _validPrice,
@@ -304,7 +325,8 @@ public class PropertyTests
             year,
             images,
             _validTraces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("Property must have images"));
@@ -321,6 +343,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentNullException>(() => new Property(
+            "id",
             name,
             _validAddress,
             _validPrice,
@@ -329,7 +352,8 @@ public class PropertyTests
             year,
             _validImages,
             _validTraces,
-            presentationConfig
+            presentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("PresentationConfig is required"));
@@ -346,6 +370,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentNullException>(() => new Property(
+            "id",
             name,
             _validAddress,
             _validPrice,
@@ -354,7 +379,8 @@ public class PropertyTests
             year,
             _validImages,
             traces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("Property must have traces"));
@@ -371,6 +397,7 @@ public class PropertyTests
 
         // Act & Assert
         var ex = Assert.Throws<ArgumentNullException>(() => new Property(
+            "id",
             name,
             _validAddress,
             _validPrice,
@@ -379,7 +406,8 @@ public class PropertyTests
             year,
             _validImages,
             traces,
-            _validPresentationConfig
+            _validPresentationConfig,
+            1
         ));
 
         Assert.That(ex.Message, Does.Contain("Property must have traces"));

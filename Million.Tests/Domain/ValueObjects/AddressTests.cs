@@ -31,7 +31,7 @@ public class AddressTests
         var country = "USA";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new Address(street, city, country));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new Address(street, city, country));
 
         Assert.That(ex.Message, Does.Contain("Street is required"));
     }
@@ -45,7 +45,7 @@ public class AddressTests
         var country = "USA";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new Address(street, city, country));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new Address(street, city, country));
 
         Assert.That(ex.Message, Does.Contain("Street is required"));
     }
@@ -59,7 +59,7 @@ public class AddressTests
         var country = "USA";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new Address(street, city, country));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new Address(street, city, country));
 
         Assert.That(ex.Message, Does.Contain("Street is required"));
     }
@@ -73,7 +73,7 @@ public class AddressTests
         var country = "USA";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new Address(street, city, country));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new Address(street, city, country));
 
         Assert.That(ex.Message, Does.Contain("City is required"));
     }
@@ -87,7 +87,7 @@ public class AddressTests
         var country = "USA";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new Address(street, city, country));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new Address(street, city, country));
 
         Assert.That(ex.Message, Does.Contain("City is required"));
     }
@@ -101,7 +101,7 @@ public class AddressTests
         var country = "USA";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new Address(street, city, country));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new Address(street, city, country));
 
         Assert.That(ex.Message, Does.Contain("City is required"));
     }
@@ -115,7 +115,7 @@ public class AddressTests
         var country = "";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new Address(street, city, country));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new Address(street, city, country));
 
         Assert.That(ex.Message, Does.Contain("Country is required"));
     }
@@ -129,7 +129,7 @@ public class AddressTests
         string country = null!;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new Address(street, city, country));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new Address(street, city, country));
 
         Assert.That(ex.Message, Does.Contain("Country is required"));
     }
@@ -143,7 +143,7 @@ public class AddressTests
         var country = "   ";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new Address(street, city, country));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new Address(street, city, country));
 
         Assert.That(ex.Message, Does.Contain("Country is required"));
     }

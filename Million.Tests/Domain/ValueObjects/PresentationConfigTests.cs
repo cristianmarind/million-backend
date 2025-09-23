@@ -58,7 +58,7 @@ public class PresentationConfigTests
         var listClass = "premium";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PresentationConfig(coverImageIndex, listClass));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyContentInvalidException>(() => new PresentationConfig(coverImageIndex, listClass));
 
         Assert.That(ex.Message, Does.Contain("Cover image index cannot be negative"));
     }
@@ -71,7 +71,7 @@ public class PresentationConfigTests
         var listClass = "";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PresentationConfig(coverImageIndex, listClass));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new PresentationConfig(coverImageIndex, listClass));
 
         Assert.That(ex.Message, Does.Contain("ListClass is required"));
     }
@@ -84,7 +84,7 @@ public class PresentationConfigTests
         string listClass = null!;
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PresentationConfig(coverImageIndex, listClass));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new PresentationConfig(coverImageIndex, listClass));
 
         Assert.That(ex.Message, Does.Contain("ListClass is required"));
     }
@@ -97,7 +97,7 @@ public class PresentationConfigTests
         var listClass = "   ";
 
         // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => new PresentationConfig(coverImageIndex, listClass));
+    var ex = Assert.Throws<Million.Domain.Exceptions.PropertyNotFoundException>(() => new PresentationConfig(coverImageIndex, listClass));
 
         Assert.That(ex.Message, Does.Contain("ListClass is required"));
     }
