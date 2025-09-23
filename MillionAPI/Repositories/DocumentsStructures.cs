@@ -33,7 +33,7 @@ public class PresentationConfigDocument {
 
 public class PropertyDocument {
     [BsonId] // marca como la PK en Mongo
-    public Guid Id { get; set; }
+    public required string Id { get; set; }
     public required int Category { get; set; }
     [BsonElement("Location")]
     public required GeoJsonPoint<GeoJson2DCoordinates> Location { get; set; }

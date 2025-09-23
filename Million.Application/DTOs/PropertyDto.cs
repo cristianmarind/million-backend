@@ -4,7 +4,8 @@ using System.Text.Json.Serialization;
 namespace Million.Application.DTOs;
 
 public class PropertyDto {
-    public Guid Id { get; set; }
+    [Required]
+    public string Id { get; set; }
     [Required]
     public int Category { get; set; } = default!;
     [Required]

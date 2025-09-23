@@ -4,7 +4,7 @@ namespace Million.Domain.Entities;
 
 public class Property
 {
-    public Guid Id { get; private set; } = Guid.NewGuid();
+    public string Id { get; private set; }
     public string Name { get; private set; }
     public Address Address { get; private set; }   
     public int Category { get; private set; }
@@ -17,6 +17,7 @@ public class Property
     public PresentationConfig PresentationConfig { get; private set; }
 
     public Property(
+        string id,
         string name,
         Address address,
         Price price,
@@ -28,6 +29,9 @@ public class Property
         PresentationConfig presentationConfig,
         int category
     ) {
+        if (string.IsNullOrWhiteSpace(id))
+            throw new ArgumentException("Property id is required", nameof(name));
+
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Property name is required", nameof(name));
 
@@ -53,7 +57,8 @@ public class Property
             throw new ArgumentNullException(nameof(propertyTraces), "Property must have traces");
         if (category == 0)
             throw new ArgumentException("Category must be valid", nameof(category));
-
+        
+        Id = id;
         Name = name;
         Address = address;
         Price = price;
