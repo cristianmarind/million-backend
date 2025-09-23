@@ -58,7 +58,7 @@ public class PropertyRepository : IPropertyRepository {
   public async Task<IEnumerable<Property>> GetByFilterAsync(PropertyFilterOptions options) {
       List<PropertyDocument> docs;
       var filter = BuildFilter(options);
-      var isNearSearch = options.latitude != null && options.longitude != null;
+      var isNearSearch = options.latitude.HasValue && options.longitude.HasValue;
 
       if (!isNearSearch) {
           docs = await _collection
@@ -68,7 +68,7 @@ public class PropertyRepository : IPropertyRepository {
           .ToListAsync();
       }
       else {
-          var coords = new double[] { options.longitude.Value, options.latitude.Value };
+          var coords = new double[] { options.longitude.GetValueOrDefault(), options.latitude.GetValueOrDefault() };
 
           docs = await _collection.Aggregate()
               .GeoNear<PropertyDocument, PropertyDocument>(
@@ -79,8 +79,8 @@ public class PropertyRepository : IPropertyRepository {
                       Query = filter
                   }
               )
-              .Skip((long)(options.PageSize * (options.Page - 1)))
-              .Limit((long)options.PageSize)
+              .Skip((long)(options.PageSize.GetValueOrDefault() * (options.Page.GetValueOrDefault() - 1)))
+              .Limit((long)options.PageSize.GetValueOrDefault())
               .ToListAsync();
       }
 
