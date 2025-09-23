@@ -5,7 +5,7 @@ namespace Million.Application.DTOs;
 
 public class PropertyDto {
     [Required]
-    public string Id { get; set; }
+    public required string Id { get; set; }
     [Required]
     public int Category { get; set; } = default!;
     [Required]
