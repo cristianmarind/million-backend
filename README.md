@@ -1,5 +1,5 @@
 # million-backend
-Bienvenido al README de Million Backend! Este es un proyecto .NET desarrollado en C#, diseñado para ofrecer una API RESTful que facilita la recuperación de datos de propiedades inmobiliarias almacenados en MongoDB. Construido sobre una arquitectura hexagonal y buenas prácticas de desarrollo.
+Bienvenido al README de Million Backend! Este es un proyecto .NET desarrollado en C#, diseñado para ofrecer una API RESTful que facilita la recuperación de datos de propiedades inmobiliarias almacenados en MongoDB. Construido sobre una arquitectura hexagonal y buenas prácticas de desarrollo. Documentación opcional generada con IA: https://deepwiki.com/cristianmarind/million-backend
 
 ## Tabla de Contenidos
 
