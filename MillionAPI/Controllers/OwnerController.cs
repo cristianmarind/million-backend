@@ -19,6 +19,9 @@ public class OwnerController : ControllerBase
     [HttpPost("find")]
     public async Task<ActionResult<Result<IEnumerable<OwnerDto>>>> GetProperties([FromBody] OwnerFilterOptions filter)
     {
+        if (filter.OwnerIdList.Count > 50)
+            return BadRequest("El tamaño máximo permitido para pageSize es 50.");
+
         var result = await _service.GetOwnersByFilterAsync(filter);
         return Ok(result);
     }

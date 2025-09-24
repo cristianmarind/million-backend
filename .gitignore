@@ -27,3 +27,4 @@ Thumbs.db
 # Ignorar archivos de reporte de pruebas y cobertura
 TestResults/
 test-results/
+reporte-html/

@@ -24,12 +24,12 @@ public class PropertyRepository : IPropertyRepository {
       }
         
       if (!string.IsNullOrWhiteSpace(options.Name))
-          filter &= filterBuilder.Regex(p => p.Name, new MongoDB.Bson.BsonRegularExpression(options.Name, "i"));
+          filter &= filterBuilder.Regex(p => p.Name, new MongoDB.Bson.BsonRegularExpression("^" + options.Name, "i"));
 
       if (!string.IsNullOrWhiteSpace(options.Address))
           filter &= filterBuilder.Or(
-              filterBuilder.Regex("Address.Street", new MongoDB.Bson.BsonRegularExpression(options.Address, "i")),
-              filterBuilder.Regex("Address.City", new MongoDB.Bson.BsonRegularExpression(options.Address, "i"))
+              filterBuilder.Regex("Address.Street", new MongoDB.Bson.BsonRegularExpression("^" + options.Address, "i")),
+              filterBuilder.Regex("Address.City", new MongoDB.Bson.BsonRegularExpression("^" + options.Address, "i"))
           );
 
       if (options.MinPrice.HasValue)

@@ -20,6 +20,9 @@ public class PropertiesController : ControllerBase
     [HttpPost("find")]
     public async Task<ActionResult<Result<IEnumerable<PropertyDto>>>> GetProperties([FromBody] PropertyFilterOptions filter)
     {
+        if (filter.PageSize > 50)
+            return BadRequest("El tamaño máximo permitido para pageSize es 50.");
+
         var result = await _service.GetPropertiesByFilterAsync(filter);
         return Ok(result);
     }
