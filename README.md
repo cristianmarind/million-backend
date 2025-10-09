@@ -1,5 +1,5 @@
-# million-backend
-Bienvenido al README de Million Backend! Este es un proyecto .NET desarrollado en C#, diseñado para ofrecer una API RESTful que facilita la recuperación de datos de propiedades inmobiliarias almacenados en MongoDB. Construido sobre una arquitectura hexagonal y buenas prácticas de desarrollo. Documentación opcional generada con IA: https://deepwiki.com/cristianmarind/million-backend
+# properties-sale-backend
+Bienvenido al README de properties-sale Backend! Este es un proyecto .NET desarrollado en C#, diseñado para ofrecer una API RESTful que facilita la recuperación de datos de propiedades inmobiliarias almacenados en MongoDB. Construido sobre una arquitectura hexagonal y buenas prácticas de desarrollo. Documentación opcional generada con IA: https://deepwiki.com/cristianmarind/properties-sale-backend
 
 ## Tabla de Contenidos
 
@@ -23,12 +23,12 @@ Bienvenido al README de Million Backend! Este es un proyecto .NET desarrollado e
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/cristianmarind/million-backend
+git clone https://github.com/cristianmarind/properties-sale-backend
 ```
 
 2. Navega al directorio del proyecto:
 ```bash
-cd million-backend
+cd properties-sale-backend
 ```
 
 3. Restaura las dependencias de NuGet:
@@ -43,12 +43,12 @@ intencion de facilitar el uso del proyecto. Nota: no se debe de hacer en entorno
 
 1. Inicia el proyecto
 ```bash
-dotnet run --project .\MillionAPI\ 
+dotnet run --project .\properties-saleAPI\ 
 ```
 
 2. Inicia el proyecto para continuar el desarrollo
 ```bash
-dotnet watch run --project .\MillionAPI\ 
+dotnet watch run --project .\properties-saleAPI\ 
 ```
 
 ## Persistencia de Datos en MongoDB
@@ -143,7 +143,7 @@ la posibilidad de añadir otros loggers tipo cloud
 
 ## Arquitectura del Sistema
 Se emplea arquitectura hexagonal con la intension de establecer una base solida para el proyecto, los componentes 
-principales son: Million.Domain (Dominio), Million.Application (Aplicación), Million.MillionAPI (Infraestructura).
+principales son: properties-sale.Domain (Dominio), properties-sale.Application (Aplicación), properties-sale.properties-saleAPI (Infraestructura).
 
 - Se emplea el patrón Repository otorgando atributos de calidad como: Mantenibilidad, Portabilidad, Testabilidad y Flexibilidad
 
@@ -160,7 +160,7 @@ el resultado de los test.
 ```bash
 dotnet tool install -g dotnet-reportgenerator-globaltool
 dotnet test --collect:"XPlat Code Coverage"
-reportgenerator -reports:"Million.Tests\TestResults\[ID del test generado]\coverage.cobertura.xml" -targetdir:"reporte-html" -reporttypes:Html
+reportgenerator -reports:"properties-sale.Tests\TestResults\[ID del test generado]\coverage.cobertura.xml" -targetdir:"reporte-html" -reporttypes:Html
 ```
 ## Licencia
 
